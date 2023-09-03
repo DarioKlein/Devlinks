@@ -31,6 +31,7 @@ body {
   background-size: cover; */
   background: var(--br-url) no-repeat top center/cover;
   /* Short Hand, é um atalho  */
+  height: 100vh;
 }
 
 body * {
@@ -39,7 +40,8 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 12px auto 0px;
   padding: 0 24px;
 }
@@ -53,6 +55,8 @@ body * {
 
 #profile img {
   height: 112px;
+  width: 112px;
+  border-radius: 50%;
 }
 
 #profile p {
@@ -80,11 +84,17 @@ body * {
   top: 50%;
   z-index: 1;
   transform: translateY(-50%);
+
+  animation: slide-out .3s;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.3s forwards;
 }
 
 #switch span {
@@ -155,4 +165,35 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/* Media queries */
+@media screen and (min-width: 700px) {
+  :root {
+    --br-url: url(./assets/bg-desktop.jpg);
+  }
+
+  .light {
+    --br-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* Animation */
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
